@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import logo from './assets/InFrameLogo.png'
+import logo from './assets/InFrameLogo.webp'
 import heroVideo from './assets/HeroVid.mp4'
 import './App.css'
 
@@ -212,7 +212,7 @@ function Icon({ name, size = 24 }) {
 function BrandLogo({ light = false }) {
   return (
     <span className={`brand-logo${light ? ' brand-logo--light' : ''}`}>
-      <img src={logo} alt="In Frame Marketing — Put Your Brand in Focus" />
+      <img src={logo} width="768" height="512" alt="In Frame Marketing — Put Your Brand in Focus" />
     </span>
   )
 }
@@ -333,12 +333,18 @@ function App() {
                 ref={videoRef}
                 className="hero__video"
                 src={heroVideo}
+                poster="/hero-poster.jpg"
+                preload="metadata"
+                width="960"
+                height="540"
                 autoPlay
                 muted
                 loop
                 playsInline
                 aria-label="In Frame Marketing brand animation"
-              />
+              >
+                <track kind="captions" src="/hero-captions.vtt" srcLang="en" label="English" />
+              </video>
               <button className="video-control" type="button" onClick={toggleVideo} aria-label={videoPlaying ? 'Pause brand animation' : 'Play brand animation'}>
                 <Icon name={videoPlaying ? 'pause' : 'play'} size={16} />
               </button>
